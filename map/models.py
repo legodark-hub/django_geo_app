@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.html import format_html
 
 
 class Place(models.Model):
@@ -19,6 +20,11 @@ class Image(models.Model):
         verbose_name="Место"
     )
     image = models.ImageField(verbose_name="Картинка")
+
+    def get_preview(self):
+        return format_html('<img src="{}" height="200" />', self.image.url)
+
+    get_preview.short_description = 'Предпросмотр'
 
     def __str__(self):
         return f'{self.id} {self.place.title}'
