@@ -1,6 +1,7 @@
-from django.urls import path
-from . import views
+from rest_framework.routers import DefaultRouter
+from .views import PlaceViewSet
 
-urlpatterns = [
-    path('', views.map_view, name='map'),
-]
+router = DefaultRouter()
+router.register(r'places', PlaceViewSet)
+
+urlpatterns = router.urls
