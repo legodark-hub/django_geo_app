@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'map',
     'rest_framework',
+    'adminsortable2'
 ]
 
 MIDDLEWARE = [

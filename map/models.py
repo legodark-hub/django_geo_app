@@ -8,6 +8,10 @@ class Place(models.Model):
     description_long = models.TextField(verbose_name="Полное описание")
     lng = models.FloatField(verbose_name="Долгота")
     lat = models.FloatField(verbose_name="Широта")
+    position = models.PositiveIntegerField(default=0, db_index=True)
+
+    class Meta:
+        ordering = ['position']
 
     def __str__(self):
         return self.title
@@ -20,6 +24,10 @@ class Image(models.Model):
         verbose_name="Место"
     )
     image = models.ImageField(verbose_name="Картинка")
+    position = models.PositiveIntegerField(default=0, db_index=True)
+
+    class Meta:
+        ordering = ['position']
 
     def get_preview(self):
         return format_html('<img src="{}" height="200" />', self.image.url)
